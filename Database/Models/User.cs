@@ -14,7 +14,7 @@ namespace CashmereServer.Database.Models
         public int Id { get; set; }
         public Guid Uuid { get; set; }
         public DateTime CreationTime { get; set; }
-        public DateTime ModifyTime { get; set; }
+        public DateTime ModifiedTime { get; set; }
         public string ExtendData { get; set; }
 
         [Required]

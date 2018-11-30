@@ -24,7 +24,8 @@ namespace CashmereServer.Database
             _BaseEntityFieldsConfig<User>(modelBuilder);
         }
 
-        private ModelBuilder _BaseEntityFieldsConfig<TEntity>(ModelBuilder modelBuilder) where TEntity : class, IBaseEntity
+        private ModelBuilder _BaseEntityFieldsConfig<TEntity>(ModelBuilder modelBuilder) 
+            where TEntity : class, IBaseEntity
         {
             modelBuilder.Entity<TEntity>()
                         .Property(e=>e.Id)

@@ -7,14 +7,10 @@ using System;
 
 namespace CashmereServer.GraphQL.Repositories
 {
-    
-    public class CashmerRepository
+
+    public partial class CashmerRepository
     {
-        private readonly CashmereDbContext _dbContext;
-        public CashmerRepository(CashmereDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+
         public Task<User> GetUserAsync(int id)
         {
             return _dbContext.User.FindAsync(id);
