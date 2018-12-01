@@ -1,6 +1,8 @@
+using System;
+
 namespace CashmereServer.Database.Models
 {
-    public class Tag
+    public class Assembly : IBaseEntity
     {
         public int Id { get; set; }
         public Guid Uuid { get; set; }

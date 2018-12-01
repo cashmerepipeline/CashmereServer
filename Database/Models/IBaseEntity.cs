@@ -18,6 +18,8 @@ namespace CashmereServer.Database.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         Guid Uuid{get; set;}
 
+        string Name{get; set;}
+
         int CreatedById{get; set;}
                 
         [Timestamp]
