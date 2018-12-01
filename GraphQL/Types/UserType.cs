@@ -15,7 +15,7 @@ namespace CashmereServer.GraphQL.Types
             descriptor.Field(t => t.Id).Type<NonNullType<IdType>>().Resolver(() => "id");
             descriptor.Field(t => t.Uuid).Type<StringType>().Resolver(() => "uuid"); 
             descriptor.Field(t => t.CreationTime).Type<DateTimeType>().Resolver(() => "creationTime");
-            descriptor.Field(t => t.ModifyTime).Type<DateTimeType>().Resolver(() => "modifyTime");
+            descriptor.Field(t => t.ModifiedTime).Type<DateTimeType>().Resolver(() => "modifyTime");
 
             descriptor.Field(t => t.Name).Type<StringType>();
             descriptor.Field(t => t.FamilyName).Type<StringType>();

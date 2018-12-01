@@ -13,9 +13,15 @@ namespace CashmereServer.Database.Models
     {
         public int Id { get; set; }
         public Guid Uuid { get; set; }
+        
+        public int CreatedById { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime CreationTime { get; set; }
+        public int ModifiedById { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime ModifiedTime { get; set; }
+
         public string ExtendData { get; set; }
+        
+        public string Descriptions { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         [Required]
         public string Name { get; set; }
@@ -37,6 +43,5 @@ namespace CashmereServer.Database.Models
 
         [Required]
         public ESex Sex { get; set; }
-
     }
 }

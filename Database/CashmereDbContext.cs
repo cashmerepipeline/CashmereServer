@@ -40,7 +40,7 @@ namespace CashmereServer.Database
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("transaction_timestamp()");
             modelBuilder.Entity<TEntity>()
-                        .Property(e=>e.ModifyTime)
+                        .Property(e=>e.ModifiedTime)
                         .ValueGeneratedOnAddOrUpdate()
                         .HasDefaultValueSql("transaction_timestamp()");
             modelBuilder.Entity<TEntity>()
