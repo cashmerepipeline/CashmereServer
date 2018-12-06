@@ -11,30 +11,14 @@ namespace CashmereServer.Database.Models
 {
     public interface IBaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         int Id{get; set;}
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         Guid Uuid{get; set;}
-
-        string Name{get; set;}
-
-        int CreatedById{get; set;}
-                
-        [Timestamp]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        int CreatedById{get; set;}        
         DateTime CreationTime {get; set;}
-
         int ModifiedById{get; set;}
-        
-        [Timestamp]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         DateTime ModifiedTime {get; set;}
-
-        [Column(TypeName="jsonb")]
-        string ExtendData { get; set; }
-
         string Descriptions{get; set;}
+        
+        string Name{get; set;}
     }
 }

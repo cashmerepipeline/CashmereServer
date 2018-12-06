@@ -13,5 +13,11 @@ namespace CashmereServer.Database.Models
         public DateTime ModifiedTime { get; set; }
         public string ExtendData { get; set; }
         public string Descriptions { get; set; }
+        public Tag[] Tags{get; set;}
+
+        public Shot[] Shots { get; set; }
+        public Assembly[] Assemblies{get; set;}
+        public AssetLibrary[] AssetLibraries{get; set;}
+        public Environment[] Environments { get; set; }
     }
 }

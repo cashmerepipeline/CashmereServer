@@ -15,9 +15,9 @@ namespace CashmereServer.GraphQL.Types
 
             descriptor.Field("creationTime").Type<DateTimeType>();
 
-            descriptor.Field("modifyTime").Type<DateTimeType>();
+            descriptor.Field("modifiedTime").Type<DateTimeType>();
 
-            descriptor.Field("extendData").Type<StringType>();
+            // descriptor.Field("extendData").Type<StringType>();
         }
     }
 }

@@ -1,6 +1,8 @@
+using System;
+
 namespace CashmereServer.Database.Models
 {
-    public class TaskResult
+    public class Message : IBaseEntity
     {
         public int Id { get; set; }
         public Guid Uuid { get; set; }

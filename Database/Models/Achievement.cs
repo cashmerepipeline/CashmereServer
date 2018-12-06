@@ -1,6 +1,8 @@
+using System;
+
 namespace CashmereServer.Database.Models
 {
-    public class Product
+    public class Achievement
     {
         public int Id { get; set; }
         public Guid Uuid { get; set; }
@@ -11,5 +13,7 @@ namespace CashmereServer.Database.Models
         public DateTime ModifiedTime { get; set; }
         public string ExtendData { get; set; }
         public string Descriptions { get; set; }
+        
+        
     }
 }

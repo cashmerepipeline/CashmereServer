@@ -14,5 +14,8 @@ namespace CashmereServer.Database.Models
         public string ExtendData { get; set; }
         public string Descriptions { get; set; }
         
+        public Asset[] Assets { get; set; }
+        public Assembly Assemblies { get; set; }
+        public Shot[] Shots { get; set; }
     }
 }

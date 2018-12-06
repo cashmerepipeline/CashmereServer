@@ -1,0 +1,26 @@
+数据库设计：
+    ☐ ID使用seriel 方式为Key
+    ☐ 每个Entity包含uuid列
+    ☐ 通用属性基类：BaseEntity, 接口：IBaseEntity
+    ☐ ExtendData列到IExtendData接口，用于后期数据库扩展
+
+    ☐ 区分Account和User的概念， Account拥有User
+    ☐ Group 和 Team 针对 Acount
+
+账号相关：
+    ☐ Account
+    ☐ Group
+    ☐ Team
+    ☐ Role
+
+    Group包含有Account
+    Team包含有Account
+
+    Acount拥有一个Role
+    Group拥有一个Role
+    Team拥有一个Role
+
+GraphQL：
+    Repository使用partial class的方式组织代码
+    
+

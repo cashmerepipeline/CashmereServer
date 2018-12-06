@@ -1,3 +1,5 @@
+using System;
+
 namespace CashmereServer.Database.Models
 {
     public class Sequence
@@ -11,5 +13,8 @@ namespace CashmereServer.Database.Models
         public DateTime ModifiedTime { get; set; }
         public string ExtendData { get; set; }
         public string Descriptions { get; set; }
+
+        public int ProjectId { get; set; }
+        public int[] ShotIds { get; set; }     
     }
 }

@@ -11,6 +11,10 @@ namespace CashmereServer.GraphQL.Types
             descriptor.Field(t => t.GetUser(default))
                 .Type<UserType>()
                 .Argument("id", a => a.DefaultValue(2));
+
+            descriptor.Field(t => t.GetAccount(default))
+                .Type<AccountType>()
+                .Argument("id", a => a.DefaultValue(2));
         }
     }
 }

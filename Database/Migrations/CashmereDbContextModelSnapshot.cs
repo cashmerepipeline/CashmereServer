@@ -20,36 +20,34 @@ namespace CashmereServer.Database.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("CashmereServer.Database.Models.User", b =>
+            modelBuilder.Entity("CashmereServer.Database.Models.Account", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("BirthDate");
+                    b.Property<int[]>("AccountTeamsIds");
+
+                    b.Property<int>("CreatedById");
 
                     b.Property<DateTime>("CreationTime")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("transaction_timestamp()");
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descriptions");
 
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("ExtendData")
-                        .HasColumnType("jsonb");
+                    b.Property<int>("GroupId");
 
-                    b.Property<string>("FamilyName")
-                        .IsRequired();
+                    b.Property<bool>("IsHuman");
 
-                    b.Property<string>("GivenName")
-                        .IsRequired();
+                    b.Property<int>("ModifiedById");
 
-                    b.Property<DateTime>("ModifyTime")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasDefaultValueSql("transaction_timestamp()");
+                    b.Property<DateTime>("ModifiedTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<string>("Password")
                         .IsRequired();
@@ -57,15 +55,207 @@ namespace CashmereServer.Database.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired();
 
-                    b.Property<int>("Sex");
+                    b.Property<int>("RoleId");
+
+                    b.Property<int[]>("TeamIds");
+
+                    b.Property<int>("UserId");
 
                     b.Property<Guid>("Uuid")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("uuid_generate_v4()");
+                        .ValueGeneratedOnAdd();
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.AccountTeam", b =>
+                {
+                    b.Property<int>("AccountId");
+
+                    b.Property<int>("TeamId");
+
+                    b.HasKey("AccountId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("AccountTeam");
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CreatedById");
+
+                    b.Property<DateTime>("CreationTime")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descriptions");
+
+                    b.Property<int>("ModifiedById");
+
+                    b.Property<DateTime>("ModifiedTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("RoleId");
+
+                    b.Property<Guid>("Uuid")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CreatedById");
+
+                    b.Property<DateTime>("CreationTime")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descriptions");
+
+                    b.Property<string>("ExtendData")
+                        .HasColumnType("jsonb");
+
+                    b.Property<int>("ModifiedById");
+
+                    b.Property<DateTime>("ModifiedTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<string>("Name");
+
+                    b.Property<Guid>("Uuid")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int[]>("AccountTeamIds");
+
+                    b.Property<int>("CreatedById");
+
+                    b.Property<DateTime>("CreationTime")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descriptions");
+
+                    b.Property<int>("ModifiedById");
+
+                    b.Property<DateTime>("ModifiedTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<string>("Name");
+
+                    b.Property<Guid>("Uuid")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("BirthDate");
+
+                    b.Property<int>("CreatedById");
+
+                    b.Property<DateTime>("CreationTime")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descriptions");
+
+                    b.Property<string>("FamilyName")
+                        .IsRequired();
+
+                    b.Property<string>("GivenName")
+                        .IsRequired();
+
+                    b.Property<int>("ModifiedById");
+
+                    b.Property<DateTime>("ModifiedTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Sex");
+
+                    b.Property<Guid>("Uuid")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.Account", b =>
+                {
+                    b.HasOne("CashmereServer.Database.Models.Group", "Group")
+                        .WithMany("Accounts")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CashmereServer.Database.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CashmereServer.Database.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.AccountTeam", b =>
+                {
+                    b.HasOne("CashmereServer.Database.Models.Account", "Account")
+                        .WithMany("AccountTeams")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CashmereServer.Database.Models.Team", "Team")
+                        .WithMany("AccountTeams")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CashmereServer.Database.Models.Group", b =>
+                {
+                    b.HasOne("CashmereServer.Database.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

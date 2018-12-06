@@ -11,27 +11,27 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmerRepository
     {
 
-        public Task<User> GetUserAsync(int id)
+        public Task<Group> GetGroupAsync(int id)
         {
-            return _dbContext.Users.FindAsync(id);
+            return _dbContext.Groups.FindAsync(id);
         }
 
-        public User GetUser(int id)
+        public Group GetGroup(int id)
         {
-            return _dbContext.Users.FindAsync(id).Result;
+            return _dbContext.Groups.FindAsync(id).Result;
         }
 
-        public int NewUserAsync(User user)
+        public int NewGroupAsync(Group Group)
         {
-            _dbContext.Users.Add(user);
+            _dbContext.Groups.Add(Group);
             var result = _dbContext.SaveChanges();
             return result;
         }
 
-        internal async Task<User> UpdateUser(int id, string name)
+        internal async Task<Group> UpdateGroup(int id, string name)
         {
-            var c = _dbContext.Users.FindAsync(id).Result;
-            c.GivenName = name;
+            var c = _dbContext.Groups.FindAsync(id).Result;
+            c.Name = name;
             await _dbContext.SaveChangesAsync();
             return c;
         }
