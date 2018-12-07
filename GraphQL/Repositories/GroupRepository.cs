@@ -4,16 +4,29 @@ using CashmereServer.Database;
 using CashmereServer.Database.Models;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
+using System.Collections.Generic;
 
 namespace CashmereServer.GraphQL.Repositories
 {
 
-    public partial class CashmerRepository
+    public partial class CashmereRepository
     {
 
         public Task<Group> GetGroupAsync(int id)
         {
             return _dbContext.Groups.FindAsync(id);
+        }
+
+        public Task<IEnumerable<Group>> GetGroupsAsync(int[] ids)
+        {
+            List<Group> result=null;
+            foreach(var id in ids)
+            {
+                // IEnumerable<Group>
+                result.Add( _dbContext.Groups.Find(id));
+            }
+
+            return result;
         }
 
         public Group GetGroup(int id)

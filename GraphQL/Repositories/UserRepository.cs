@@ -8,7 +8,7 @@ using System;
 namespace CashmereServer.GraphQL.Repositories
 {
 
-    public partial class CashmerRepository
+    public partial class CashmereRepository
     {
 
         public Task<User> GetUserAsync(int id)

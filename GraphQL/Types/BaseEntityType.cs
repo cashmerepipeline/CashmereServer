@@ -8,16 +8,17 @@ namespace CashmereServer.GraphQL.Types
         protected override void Configure(IInterfaceTypeDescriptor descriptor)
         {
             descriptor.Name("BaseEntityType");
+            
 
             descriptor.Field("id").Type<NonNullType<IdType>>();
 
             descriptor.Field("uuid").Type<StringType>();
 
-            descriptor.Field("creatorId").Type<IntType>();
+            // descriptor.Field("creator").Type<IntType>();
 
             descriptor.Field("creationTime").Type<DateTimeType>();
 
-            descriptor.Field("modifierId").Type<IntType>();
+            // descriptor.Field("modifier").Type<Account>();
 
             descriptor.Field("modifiedTime").Type<DateTimeType>();
 

@@ -7,9 +7,9 @@ namespace CashmereServer.GraphQL.Schemas
 {
     public class Query
     {
-        private readonly CashmerRepository _repository;
+        private readonly CashmereRepository _repository;
 
-        public Query(CashmerRepository repository)
+        public Query(CashmereRepository repository)
         {
             _repository = repository
                 ?? throw new ArgumentNullException(nameof(repository));

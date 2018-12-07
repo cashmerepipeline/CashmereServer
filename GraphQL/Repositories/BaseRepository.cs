@@ -8,12 +8,22 @@ using System;
 namespace CashmereServer.GraphQL.Repositories
 {
 
-    public partial class CashmerRepository
+    public partial class CashmereRepository
     {
         private readonly CashmereDbContext _dbContext;
-        public CashmerRepository(CashmereDbContext dbContext)
+        public CashmereRepository(CashmereDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public static  Task<TEntity> GetEntityById<TEntity>(int id, CashmereDbContext dbContext) where TEntity: class
+        {
+            return  dbContext.FindAsync<TEntity>(id);
+        }
+
+        public static Task<TEntity> GetEntityByIds<TEntity>(int[] ids, CashmereDbContext dbContext) where TEntity: class
+        {
+            return  dbContext.FindAsync<TEntity>(ids);
         }
     }
 }

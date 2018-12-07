@@ -39,7 +39,7 @@ namespace CashmereServer
             // If you need dependency injection with your query object add your query type as a services.
             // services.AddSingleton<Query>();
             // Add the custom services like repositories etc ...
-            services.AddTransient<CashmerRepository>();
+            services.AddTransient<CashmereRepository>();
             services.AddTransient<Query>();
             services.AddTransient<Mutation>();
 
@@ -69,7 +69,6 @@ namespace CashmereServer
                 app.UseDeveloperExceptionPage();
             }
             app.UseGraphQL();
-
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
             app.UseMvc();

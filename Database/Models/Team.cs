@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CashmereServer.Database.Models
 {
@@ -7,5 +8,9 @@ namespace CashmereServer.Database.Models
     {
         public int[] AccountTeamIds { get; set; }
         public List<AccountTeam> AccountTeams { get; set; }
+
+        // graphql only
+        [NotMapped]
+        public List<Account> Accounts { get; set; }
     }
 }

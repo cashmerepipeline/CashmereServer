@@ -17,18 +17,19 @@ namespace CashmereServer.Database.Models
 
         public bool IsHuman { get; set; }
 
-        public int[] GroupIds { get; set; }
         public int[] AccountGroupIds { get; set; }
-        public List<AccountGroup> AccountGroups { get; set; }
+        public List<AccountGroup> AccountGroups { get; set; } // not in graphql
 
-        public int[] TeamIds { get; set; }
         public int[] AccountTeamIds { get; set; }
-        public List<AccountTeam> AccountTeams { get; set; }
-
-        public int RoleId { get; set; }
-        public Role Role { get; set; }
+        public List<AccountTeam> AccountTeams { get; set; } // not in graphql
 
         public int UserId { get; set; }
         public User User { get; set; }
+
+        // graphql only
+        [NotMapped]
+        public List<Group> Groups { get; set; }
+        [NotMapped]
+        public List<Team> Teams { get; set; }
     }
 }

@@ -6,9 +6,9 @@ namespace CashmereServer.GraphQL.Schemas
 {
     public class Mutation
     {
-        private readonly CashmerRepository _repository;
+        private readonly CashmereRepository _repository;
 
-        public Mutation(CashmerRepository repository)
+        public Mutation(CashmereRepository repository)
         {
             _repository = repository
                 ?? throw new ArgumentNullException(nameof(repository));

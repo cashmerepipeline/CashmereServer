@@ -7,15 +7,12 @@ namespace CashmereServer.Database.Models
     public abstract class BaseEntity : IBaseEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Uuid { get; set; }
 
         public int CreatorId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(TypeName="timestamp with time zone")]
         public DateTime CreationTime { get; set; }
         
@@ -27,5 +24,11 @@ namespace CashmereServer.Database.Models
 
         public string Name { get; set; }
         public string Descriptions { get; set; }
+
+         // graphql only
+        [NotMapped]
+        public Account Creator { get; set; }
+        [NotMapped]
+        public Account Modifier {get; set;}
     }
 }
