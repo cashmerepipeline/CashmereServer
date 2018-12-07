@@ -2,8 +2,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
-using Npgsql.NodaTime;
-using NodaTime;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
@@ -13,9 +11,9 @@ namespace CashmereServer.Database.Models
     {
         int Id{get; set;}
         Guid Uuid{get; set;}
-        int CreatedById{get; set;}        
+        int CreatorId{get; set;}        
         DateTime CreationTime {get; set;}
-        int ModifiedById{get; set;}
+        int ModifierId{get; set;}
         DateTime ModifiedTime {get; set;}
         string Descriptions{get; set;}
         

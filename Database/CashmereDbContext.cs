@@ -35,23 +35,36 @@ namespace CashmereServer.Database
                 //skip interface
                 if (model.IsInterface)
                     continue;
+                if((model.GetField("Id") == null))
+                    continue;
 
                 _BaseEntityFieldsConfig(modelBuilder, model);
                 // modelBuilder.Entity<Activator.CreateInstance(model)>()
             }
 
+            // account -- team many-many
             modelBuilder.Entity<AccountTeam>()
                 .HasKey(at => new { at.AccountId, at.TeamId });
-
             modelBuilder.Entity<AccountTeam>()
                 .HasOne(at=>at.Account)
                 .WithMany(a=>a.AccountTeams)
                 .HasForeignKey(at=>at.AccountId);
-
             modelBuilder.Entity<AccountTeam>()
                 .HasOne(at=>at.Team)
                 .WithMany(t=>t.AccountTeams)
                 .HasForeignKey(t=>t.TeamId);
+
+            // account -- group many-many
+            modelBuilder.Entity<AccountGroup>()
+                .HasKey(at => new { at.AccountId, at.GroupId });
+            modelBuilder.Entity<AccountGroup>()
+                .HasOne(at=>at.Account)
+                .WithMany(a=>a.AccountGroups)
+                .HasForeignKey(at=>at.AccountId);
+            modelBuilder.Entity<AccountGroup>()
+                .HasOne(at=>at.Group)
+                .WithMany(t=>t.AccountGroups)
+                .HasForeignKey(t=>t.GroupId);
         }
 
        private ModelBuilder _BaseEntityFieldsConfig(ModelBuilder modelBuilder, Type modelType)
@@ -68,7 +81,7 @@ namespace CashmereServer.Database
                         .HasDefaultValueSql("uuid_generate_v4()");
 
             newModelBuilder
-                        .Property("CreatingTime")
+                        .Property("CreationTime")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("transaction_timestamp()");
 
@@ -77,16 +90,16 @@ namespace CashmereServer.Database
                         .ValueGeneratedOnAddOrUpdate()
                         .HasDefaultValueSql("transaction_timestamp()");
                         
-            newModelBuilder
-                        .Property("ExtendData")
-                        .HasColumnType("jsonb");
+            // newModelBuilder
+                        // .Property("ExtendData")
+                        // .HasColumnType("jsonb");
 
             return modelBuilder;
         }
 
         private IEnumerable<Type> _GetModelTypes()
         {
-            string name_space = "IMixServer.Database.Models";
+            string name_space = "CashmereServer.Database.Models";
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             return

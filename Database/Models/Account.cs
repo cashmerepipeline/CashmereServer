@@ -17,16 +17,17 @@ namespace CashmereServer.Database.Models
 
         public bool IsHuman { get; set; }
 
-        public int GroupId { get; set; }
-        public Group Group { get; set; }
+        public int[] GroupIds { get; set; }
+        public int[] AccountGroupIds { get; set; }
+        public List<AccountGroup> AccountGroups { get; set; }
 
         public int[] TeamIds { get; set; }
-        public int[] AccountTeamsIds { get; set; }
+        public int[] AccountTeamIds { get; set; }
         public List<AccountTeam> AccountTeams { get; set; }
 
         public int RoleId { get; set; }
         public Role Role { get; set; }
-        
+
         public int UserId { get; set; }
         public User User { get; set; }
     }

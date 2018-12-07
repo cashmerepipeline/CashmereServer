@@ -13,7 +13,11 @@ namespace CashmereServer.GraphQL.Types
 
             descriptor.Field("uuid").Type<StringType>();
 
+            descriptor.Field("creatorId").Type<IntType>();
+
             descriptor.Field("creationTime").Type<DateTimeType>();
+
+            descriptor.Field("modifierId").Type<IntType>();
 
             descriptor.Field("modifiedTime").Type<DateTimeType>();
 

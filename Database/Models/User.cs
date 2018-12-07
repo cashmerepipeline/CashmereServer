@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
-using Npgsql.NodaTime;
-using NodaTime;
 using System.ComponentModel.DataAnnotations.Schema;
 using CashmereServer.Database.Enums;
 

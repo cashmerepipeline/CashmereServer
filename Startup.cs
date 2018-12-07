@@ -35,7 +35,6 @@ namespace CashmereServer
             var connectionString = Configuration.GetConnectionString("CashmereDbContext");
             services.AddEntityFrameworkNpgsql().AddDbContext<CashmereDbContext>(
                options => options.UseNpgsql(connectionString));
-                        //    o=>o.UseNodaTime()) );
 
             // If you need dependency injection with your query object add your query type as a services.
             // services.AddSingleton<Query>();
@@ -52,6 +51,9 @@ namespace CashmereServer
                 c.RegisterMutationType<MutationType>();
 
                 c.RegisterType<UserType>();
+                c.RegisterType<AccountType>();
+                c.RegisterType<GroupType>();
+                c.RegisterType<TeamType>();
             }));
 
             services.AddSpaStaticFiles();
