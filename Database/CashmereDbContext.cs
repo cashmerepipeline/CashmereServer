@@ -42,6 +42,9 @@ namespace CashmereServer.Database
                 // modelBuilder.Entity<Activator.CreateInstance(model)>()
             }
 
+            modelBuilder.Entity<Account>().HasIndex(a=>a.Email).IsUnique();
+            modelBuilder.Entity<Account>().HasIndex(a=>a.PhoneNumber).IsUnique();
+
             // account -- team many-many
             modelBuilder.Entity<AccountTeam>()
                 .HasKey(at => new { at.AccountId, at.TeamId });
@@ -74,11 +77,13 @@ namespace CashmereServer.Database
                         .Property("Id")
                         .ValueGeneratedOnAdd()
                         .UseNpgsqlIdentityColumn();
+            
+            // newModelBuilder
+                        // .Property("Uuid")
+                        // .ValueGeneratedOnAdd()
+                        // .HasDefaultValueSql("uuid_generate_v4()");
 
-            newModelBuilder
-                        .Property("Uuid")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("uuid_generate_v4()");
+            newModelBuilder.HasAlternateKey("Uuid");
 
             newModelBuilder
                         .Property("CreationTime")
@@ -88,6 +93,7 @@ namespace CashmereServer.Database
             newModelBuilder
                         .Property("ModifiedTime")
                         .ValueGeneratedOnAddOrUpdate()
+                        .HasComputedColumnSql("transaction_timestamp()")
                         .HasDefaultValueSql("transaction_timestamp()");
                         
             // newModelBuilder

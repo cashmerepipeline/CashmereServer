@@ -5,21 +5,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CashmereServer.Database.Models
 {
     public abstract class BaseEntity : IBaseEntity
-    {
+    {   
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public Guid Uuid { get; set; }
+        // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        // public Guid Uuid { get; set; }
 
-        public int CreatorId { get; set; }
+        public Guid CreatorId { get; set; }
 
         [Column(TypeName="timestamp with time zone")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreationTime { get; set; }
         
-        public int ModifierId { get; set; }
+        public Guid ModifierId { get; set; }
 
         [Timestamp]
         [Column(TypeName="timestamp with time zone")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime ModifiedTime { get; set; }
 
         public string Name { get; set; }

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 
 namespace CashmereServer
 {
@@ -44,7 +45,7 @@ namespace CashmereServer
             services.AddTransient<Mutation>();
 
             // Add GraphQL Services
-            services.AddGraphQL(sp => Schema.Create(c => 
+            services.AddGraphQL(sp => Schema.Create(c =>
             {
                 c.RegisterServiceProvider(sp);
                 c.RegisterQueryType<Query>();
@@ -55,6 +56,9 @@ namespace CashmereServer
                 c.RegisterType<GroupType>();
                 c.RegisterType<TeamType>();
             }));
+
+
+
 
             services.AddSpaStaticFiles();
             services.AddRouting();
@@ -67,11 +71,27 @@ namespace CashmereServer
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                // {
+                //     HotModuleReplacement = true
+                // });
             }
+
             app.UseGraphQL();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
-            app.UseMvc();
+            // app.UseMvc(routes =>
+            // {
+            //     routes.MapRoute(
+            //         name: "default",
+            //         template: "{controller=Home}/{action=Index}/{id?}");
+            //     ///////////////////////////////////////////////////
+            //     routes.MapSpaFallbackRoute(
+            //         name: "spa-fallback",
+            //         defaults: new { controller = "Home", action = "Index" });
+            //     ///////////////////////////////////////////////////////
+            // });
         }
     }
 }

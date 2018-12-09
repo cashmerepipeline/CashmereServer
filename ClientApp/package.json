@@ -1,0 +1,24 @@
+{
+  "name": "clientapp",
+  "version": "1.0.0",
+  "description": "cashmere client app",
+  "main": "index.js",
+  "scripts": {
+    "test": "cashtest"
+  },
+  "keywords": [
+    "cashmere"
+  ],
+  "author": "yangang",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-client": "^2.4.7",
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.11",
+    "graphql": "^14.0.2",
+    "vue": "^2.5.18",
+    "vue-apollo": "^3.0.0-beta.26",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.0.1"
+  }
+}

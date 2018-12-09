@@ -23,7 +23,7 @@ namespace CashmereServer.GraphQL.Types
             // descriptor.Field(t=>t.Role).Ignore();
 
             descriptor.Field(t => t.Id).Type<NonNullType<IdType>>();
-            descriptor.Field(t => t.Uuid).Type<StringType>(); 
+            // descriptor.Field(t => t.Uuid).Type<StringType>(); 
             // descriptor.Field(t=>t.Creator).Type<IntType>();
             descriptor.Field(t => t.CreationTime).Type<DateTimeType>();
             // descriptor.Field(t=>t.Modifier).Type<IntType>();

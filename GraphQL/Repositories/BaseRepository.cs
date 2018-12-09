@@ -21,6 +21,12 @@ namespace CashmereServer.GraphQL.Repositories
             return  dbContext.FindAsync<TEntity>(id);
         }
 
+        // public static  Task<TEntity> GetEntityByUuid<TEntity>(string uuid, CashmereDbContext dbContext) where TEntity: class
+        // {   
+        //     int id = dbContext.FindAsync
+        //     return  dbContext.FindAsync<TEntity>(uuid);
+        // }
+
         public static Task<TEntity> GetEntityByIds<TEntity>(int[] ids, CashmereDbContext dbContext) where TEntity: class
         {
             return  dbContext.FindAsync<TEntity>(ids);

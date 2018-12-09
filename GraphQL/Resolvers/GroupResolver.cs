@@ -4,6 +4,7 @@ using CashmereServer.Database.Models;
 using CashmereServer.GraphQL.Repositories;
 using HotChocolate;
 using CashmereServer.Database.Models;
+using System;
 
 namespace CashmereServer.GraphQL.Resolvers
 {
@@ -11,10 +12,10 @@ namespace CashmereServer.GraphQL.Resolvers
     {
         private readonly CashmereRepository repository;
 
-        public Task<IEnumerable<Group>> GetGroups(int[] ids, [Service]CashmereRepository repository)
+        public Task<List<Group>> GetGroups(Guid[] ids, [Service]CashmereRepository repository)
         {
 
-            return Task(repository.GetGroupsAsync(ids));
+            return repository.GetGroupsAsync(ids);
         }
     }
 }

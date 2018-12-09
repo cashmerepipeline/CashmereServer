@@ -1,5 +1,7 @@
 开发日志：
-    ☐ 区分Account和User和概念
+    ✔ 区分Account和User和概念 @done(18-12-09 09:40)
+    ✔ 使用Guid作为id @done(18-12-09 09:41)4
+    ☐ 集成DataLoader GreenNut
 
 数据库设计：
     ☐ 使用BaseEntity抽象类重构数据表

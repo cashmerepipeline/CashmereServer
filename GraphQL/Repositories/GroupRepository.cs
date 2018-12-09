@@ -5,6 +5,7 @@ using CashmereServer.Database.Models;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace CashmereServer.GraphQL.Repositories
 {
@@ -17,14 +18,16 @@ namespace CashmereServer.GraphQL.Repositories
             return _dbContext.Groups.FindAsync(id);
         }
 
-        public Task<IEnumerable<Group>> GetGroupsAsync(int[] ids)
+        public Task<List<Group>> GetGroupsAsync(Guid[] ids)
         {
-            List<Group> result=null;
-            foreach(var id in ids)
-            {
-                // IEnumerable<Group>
-                result.Add( _dbContext.Groups.Find(id));
-            }
+            // List<Group> result=null;
+            // foreach(var id in ids)
+            // {
+            //     // IEnumerable<Group>
+            //     result.Add( _dbContext.Groups.;
+            // }
+
+            var result = _dbContext.Groups.Where(g=>ids.Contains(g.Id)).ToListAsync();
 
             return result;
         }

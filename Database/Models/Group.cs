@@ -6,7 +6,7 @@ namespace CashmereServer.Database.Models
 {
     public class Group : BaseEntity
     {
-        public int[] AccountGroupIds { get; set; }
+        public Guid[] AccountGroupIds { get; set; }
         public List<AccountGroup> AccountGroups { get; set; }
 
         // graphql only
