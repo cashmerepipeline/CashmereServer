@@ -10,12 +10,12 @@ namespace CashmereServer.GraphQL.Resolvers
 {
     public class GroupResolver
     {
-        private readonly CashmereRepository repository;
+        // private readonly CashmereRepository repository;
 
-        public Task<List<Group>> GetGroups(Guid[] ids, [Service]CashmereRepository repository)
-        {
+        // public Task<List<Group>> GetGroups(Guid[] ids, [Service]CashmereRepository repository)
+        // {
 
-            return repository.GetGroupsAsync(ids);
-        }
+        //     return repository.GetGroupsAsync(ids);
+        // }
     }
 }

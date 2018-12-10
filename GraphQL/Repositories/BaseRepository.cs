@@ -7,29 +7,28 @@ using System;
 
 namespace CashmereServer.GraphQL.Repositories
 {
-
     public partial class CashmereRepository
     {
         private readonly CashmereDbContext _dbContext;
-        public CashmereRepository(CashmereDbContext dbContext)
+        public CashmereRepository(CashmereDbContext db)
         {
-            _dbContext = dbContext;
+            _dbContext = db;
         }
 
-        public static  Task<TEntity> GetEntityById<TEntity>(int id, CashmereDbContext dbContext) where TEntity: class
-        {
-            return  dbContext.FindAsync<TEntity>(id);
-        }
-
-        // public static  Task<TEntity> GetEntityByUuid<TEntity>(string uuid, CashmereDbContext dbContext) where TEntity: class
-        // {   
-        //     int id = dbContext.FindAsync
-        //     return  dbContext.FindAsync<TEntity>(uuid);
+        // public static  Task<TEntity> GetEntityById<TEntity>(Guid id)
+        // {
+        //     return  _dbContext.FindAsync<TEntity>(id);
         // }
 
-        public static Task<TEntity> GetEntityByIds<TEntity>(int[] ids, CashmereDbContext dbContext) where TEntity: class
-        {
-            return  dbContext.FindAsync<TEntity>(ids);
-        }
+        // // public static  Task<TEntity> GetEntityByUuid<TEntity>(string uuid, CashmereDbContext dbContext) where TEntity: class
+        // // {   
+        // //     int id = dbContext.FindAsync
+        // //     return  dbContext.FindAsync<TEntity>(uuid);
+        // // }
+
+        // public static Task<TEntity> GetEntityByIds<TEntity>(Guid[] ids)
+        // {
+        //     return  _dbContext.FindAsync<TEntity>(ids);
+        // }
     }
 }

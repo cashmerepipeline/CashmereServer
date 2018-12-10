@@ -1,3 +1,13 @@
+开发栈：
+    asp.net core
+    ef
+    postgresql
+    hotchocolate
+    vue
+        vue-apollo
+        element-ui
+        
+
 数据库设计：
     ✘ ID使用seriel 方式为Key @cancelled(18-12-09 09:32)
     ✘ 每个Entity包含uuid列 @cancelled(18-12-09 09:32)
