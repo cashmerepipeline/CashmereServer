@@ -22,6 +22,13 @@ namespace CashmereServer.Controllers
             return View();
         }
 
+        public IActionResult Vue()
+        {
+            ViewData["Vue"] = "Your application description page.";
+
+            return View();
+        }
+
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";

@@ -1,3 +1,15 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 #Ignore thumbnails created by Windows
 Thumbs.db
@@ -30,5 +42,3 @@ _ReSharper*/
 .vs/
 #Nuget packages folder
 packages/
-Migrations/
-node_modules/

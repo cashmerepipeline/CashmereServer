@@ -12,7 +12,7 @@ namespace CashmereServer.GraphQL.Types
 
             descriptor.Field("id").Type<NonNullType<IdType>>();
 
-            descriptor.Field("uuid").Type<StringType>();
+            // descriptor.Field("uuid").Type<StringType>();
 
             // descriptor.Field("creator").Type<IntType>();
 

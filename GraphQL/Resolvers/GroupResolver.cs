@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using CashmereServer.Database.Models;
 using CashmereServer.GraphQL.Repositories;
 using HotChocolate;
-using CashmereServer.Database.Models;
 using System;
 
 namespace CashmereServer.GraphQL.Resolvers

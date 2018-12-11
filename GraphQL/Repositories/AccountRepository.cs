@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using System.Threading;
 using System.Linq;
 using CashmereServer.Database;
 using CashmereServer.Database.Models;
@@ -18,40 +19,60 @@ namespace CashmereServer.GraphQL.Repositories
             return _dbContext.Accounts.FindAsync(id);
         }
 
-        public Account GetAccount(Guid id)
+        public Task<Account> GetAccount(Guid id)
         {
-            return _dbContext.Accounts.FindAsync(id).Result;
+            return _dbContext.Accounts.FindAsync(id);
         }
 
-        public IAsyncEnumerable<Account> GetAccountByIds(IReadOnlyList<Guid> ids)
+        public IEnumerable<Account> GetAccountByIds(IEnumerable<Guid> ids)
         {
-            return _dbContext.Accounts.ToAsyncEnumerable().Where(a=>ids.Contains(a.Id));
+            return _dbContext.Accounts.ToList().Where(a=>ids.Contains(a.Id));
+            // var result = _dbContext.Accounts.ToList().Where(a=>ids.Contains(a.Id));
+            // return System.Threading.Tasks.Task.FromResult<IEnumerable<Account>>(result);
         }
 
-        // public Task<IReadOnlyList<IResult<Account>>> GetAccountByIds(IReadOnlyList<Guid> ids)
-        // {
-        //     var results =  _dbContext.Accounts.ToList().Where(a=>ids.Contains(a.Id));
-        //     var tsk = new Task<IEnumerable<Account>>(()=>{
-        //         return results;
-        //     });
+        public int NewAccountAsync(Account account)
+        {
+            try
+            {   
+                account.Id = new Guid();
+
+                var utcNow = DateTime.UtcNow;
+                account.CreationTime = utcNow;
+                account.ModifiedTime = utcNow;
+                
+                account.CreatorId = account.Id;
+                account.ModifierId = account.Id;
+
+                account.UserId = new Guid();
+
+                // account.CreatorId = currentUserId;
+                _dbContext.Accounts.Add(account);
+                var result = _dbContext.SaveChanges();
+                
+                return result;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+           
+        }
+
+        internal async Task<Account> UpdateAccount(int id, Dictionary<string, dynamic> properties)
+        {
+            var account = _dbContext.Accounts.Find(id);
+            foreach(var key in properties.Keys)
+            {
+                if(account.GetType().GetProperty(key) != null)
+                {
+                    var property = account.GetType().GetProperty(key);
+                    property.SetValue(property, properties.GetValueOrDefault(key));
+                }
+            }
             
-        //     return tsk;
-
-        // }
-
-        public int NewAccountAsync(Account Account)
-        {
-            _dbContext.Accounts.Add(Account);
-            var result = _dbContext.SaveChanges();
-            return result;
-        }
-
-        internal async Task<Account> UpdateAccount(int id, string name)
-        {
-            var c = _dbContext.Accounts.FindAsync(id).Result;
-            c.Name = name;
             await _dbContext.SaveChangesAsync();
-            return c;
+            return account;
         }
     }
 }

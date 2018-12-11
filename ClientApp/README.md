@@ -1,4 +1,4 @@
-# clientapp
+# cashmereclient
 
 > cashmere client
 

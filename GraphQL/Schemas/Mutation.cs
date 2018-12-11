@@ -13,6 +13,20 @@ namespace CashmereServer.GraphQL.Schemas
             _repository = repository
                 ?? throw new ArgumentNullException(nameof(repository));
         }
+
+        public Account NewAccount(string name, string phoneNumber, string email, string password)
+        {
+            var a = new Account();
+            a.Name = name;
+            a.PhoneNumber = phoneNumber;
+            a.Email = email;
+            a.Password = password;
+
+            _repository.NewAccountAsync(a);
+            
+            return a;
+        }
+
         public User NewUser(string name){
             User c = new User();
             c.Id=new Guid();

@@ -9,6 +9,13 @@ namespace CashmereServer.GraphQL.Types
     {
         protected override void Configure(IObjectTypeDescriptor<Mutation> descriptor)
         {
+            descriptor.Field(t=>t.NewAccount(default, default, default, default))
+                .Type<NonNullType<AccountType>>()
+                .Argument("name", a=>a.Type<StringType>())
+                .Argument("phoneNumber", a=>a.Type<StringType>())
+                .Argument("email", a=>a.Type<StringType>())
+                .Argument("password", a=>a.Type<StringType>());
+
             descriptor.Field(t => t.NewUser(default))
                 .Type<NonNullType<UserType>>()
                 .Argument("name", a => a.Type<StringType>());

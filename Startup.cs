@@ -6,6 +6,7 @@ using HotChocolate;
 using HotChocolate.Types;
 using CashmereServer.Database;
 using CashmereServer.GraphQL.Repositories;
+using CashmereServer.GraphQL.DataLoaders;
 using CashmereServer.GraphQL.Schemas;
 using CashmereServer.GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +49,9 @@ namespace CashmereServer
             services.AddGraphQL(sp => Schema.Create(c =>
             {
                 c.RegisterServiceProvider(sp);
+
+                c.RegisterDataLoader<AccountDataLoader>();
+
                 c.RegisterQueryType<Query>();
                 c.RegisterMutationType<MutationType>();
 
@@ -72,6 +76,7 @@ namespace CashmereServer
             {
                 app.UseDeveloperExceptionPage();
 
+                // for vue
                 // app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 // {
                 //     HotModuleReplacement = true
@@ -80,18 +85,18 @@ namespace CashmereServer
 
             app.UseGraphQL();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
-            // app.UseMvc(routes =>
-            // {
-            //     routes.MapRoute(
-            //         name: "default",
-            //         template: "{controller=Home}/{action=Index}/{id?}");
-            //     ///////////////////////////////////////////////////
-            //     routes.MapSpaFallbackRoute(
-            //         name: "spa-fallback",
-            //         defaults: new { controller = "Home", action = "Index" });
-            //     ///////////////////////////////////////////////////////
-            // });
+            // app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+                ///////////////////////////////////////////////////
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
+                ///////////////////////////////////////////////////////
+            });
         }
     }
 }

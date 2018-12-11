@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/CashmereServer.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/CashmereServer.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,

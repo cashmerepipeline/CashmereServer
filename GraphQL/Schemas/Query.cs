@@ -2,6 +2,8 @@ using System;
 using System.Threading.Tasks;
 using CashmereServer.Database.Models;
 using CashmereServer.GraphQL.Repositories;
+using CashmereServer.GraphQL.DataLoaders;
+using HotChocolate;
 
 namespace CashmereServer.GraphQL.Schemas
 {
@@ -16,9 +18,9 @@ namespace CashmereServer.GraphQL.Schemas
         }
         // public string Hello() => "world";
 
-        public Account GetAccount(int id)
+        public Task<Account> GetAccount(Guid id, [DataLoader]AccountDataLoader dataLoader)
         {
-            return _repository.GetAccountAsync(id).Result;
+            return dataLoader.LoadAsync(id);
         }
 
         public Group GetGroup(int id)
