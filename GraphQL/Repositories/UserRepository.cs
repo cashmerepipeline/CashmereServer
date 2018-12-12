@@ -11,12 +11,12 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<User> GetUserAsync(int id)
+        public Task<User> GetUserAsync(Guid id)
         {
             return _dbContext.Users.FindAsync(id);
         }
 
-        public User GetUser(int id)
+        public User GetUser(Guid id)
         {
             return _dbContext.Users.FindAsync(id).Result;
         }
