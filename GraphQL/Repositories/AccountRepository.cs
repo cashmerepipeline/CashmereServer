@@ -66,10 +66,7 @@ namespace CashmereServer.GraphQL.Repositories
 
                 account.User = user;
 
-                // account.CreatorId = currentUserId;
                 _dbContext.Users.Add(user);
-                // _dbContext.SaveChanges();
-                
                 _dbContext.Accounts.Add(account);
 
                 Console.WriteLine("{0}, {1}, {2}, {3}",

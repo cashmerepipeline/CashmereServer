@@ -10,7 +10,7 @@ namespace CashmereServer.GraphQL.Types
             descriptor.Name("BaseEntityType");
             
 
-            descriptor.Field("id").Type<NonNullType<IdType>>();
+            descriptor.Field("id").Type<NonNullType<UuidType>>();
 
             // descriptor.Field("uuid").Type<StringType>();
 

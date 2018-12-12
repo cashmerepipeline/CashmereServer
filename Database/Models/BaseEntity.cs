@@ -19,7 +19,7 @@ namespace CashmereServer.Database.Models
         
         public Guid ModifierId { get; set; }
 
-        [Timestamp]
+        // [Timestamp]
         // [Column(TypeName="timestamp with time zone")]
         public DateTime ModifiedTime { get; set; }
 

@@ -97,11 +97,11 @@ namespace CashmereServer.Database
             //             .ValueGeneratedOnAdd()
             //             .HasDefaultValueSql("transaction_timestamp()");
 
-            // newModelBuilder
-            //             .Property("ModifiedTime")
-            //             .ValueGeneratedOnAddOrUpdate()
+            newModelBuilder
+                        .Property("ModifiedTime")
+                        // .ValueGeneratedOnAddOrUpdate()
             //             .HasComputedColumnSql("transaction_timestamp()")
-            //             .HasDefaultValueSql("transaction_timestamp()");
+                        .HasDefaultValueSql("transaction_timestamp()");
                         
             // newModelBuilder
                         // .Property("ExtendData")

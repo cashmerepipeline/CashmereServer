@@ -1,0 +1,13 @@
+mutation{
+  newAccount(name: "YanGang", phoneNumber: "15147796961", email: "yes7rose@sina.com", password:"passworkd"){
+    id
+    creationTime
+    modifiedTime
+    name
+    password
+    phoneNumber
+    email
+    isHuman
+    descriptions
+  }
+}
