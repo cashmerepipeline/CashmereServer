@@ -11,7 +11,7 @@ namespace CashmereServer.GraphQL.Resolvers
     {
         // private readonly CashmereRepository repository;
 
-        // public Task<List<Group>> GetGroups(Guid[] ids, [Service]CashmereRepository repository)
+        // public Task<List<Group>> GetGroups(string[] ids, [Service]CashmereRepository repository)
         // {
 
         //     return repository.GetGroupsAsync(ids);

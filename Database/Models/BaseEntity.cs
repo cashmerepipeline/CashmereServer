@@ -14,15 +14,13 @@ namespace CashmereServer.Database.Models
 
         public Guid CreatorId { get; set; }
 
-        [Column(TypeName="timestamp with time zone")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        // [Column(TypeName="timestamp with time zone")]
         public DateTime CreationTime { get; set; }
         
         public Guid ModifierId { get; set; }
 
-        [Timestamp]
-        [Column(TypeName="timestamp with time zone")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        // [Timestamp]
+        // [Column(TypeName="timestamp with time zone")]
         public DateTime ModifiedTime { get; set; }
 
         public string Name { get; set; }

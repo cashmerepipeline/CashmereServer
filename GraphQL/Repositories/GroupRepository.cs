@@ -18,7 +18,7 @@ namespace CashmereServer.GraphQL.Repositories
             return _dbContext.Groups.FindAsync(id);
         }
 
-        public Task<List<Group>> GetGroupsAsync(Guid[] ids)
+        public Task<List<Group>> GetGroupsAsync(string[] ids)
         {
             // List<Group> result=null;
             // foreach(var id in ids)

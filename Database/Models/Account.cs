@@ -23,7 +23,7 @@ namespace CashmereServer.Database.Models
         public Guid[] AccountTeamIds { get; set; }
         public List<AccountTeam> AccountTeams { get; set; } // not in graphql
 
-        public Guid UserId { get; set; }
+        public Guid UserId { get; set; } // create at add account
         public User User { get; set; }
 
         // graphql only

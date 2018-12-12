@@ -1,20 +1,14 @@
 using System;
+using System.Collections.Generic;
 
 namespace CashmereServer.Database.Models
 {
     public class Sequence
     {
-        public int Id { get; set; }
-        public Guid Uuid { get; set; }
-        public string Name { get; set; }
-        public int CreatedById { get; set; }
-        public DateTime CreationTime { get; set; }
-        public int ModifiedById { get; set; }
-        public DateTime ModifiedTime { get; set; }
-        public string ExtendData { get; set; }
-        public string Descriptions { get; set; }
+        public Guid ProjectId { get; set; }
+        public Project Project { get; set; }
 
-        public int ProjectId { get; set; }
-        public int[] ShotIds { get; set; }     
+        public Guid[] ShotIds { get; set; }     
+        public List<Guid> Shots { get; set; }
     }
 }

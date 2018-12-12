@@ -15,7 +15,7 @@ namespace CashmereServer.GraphQL.Repositories
             _dbContext = db;
         }
 
-        // public static  Task<TEntity> GetEntityById<TEntity>(Guid id)
+        // public static  Task<TEntity> GetEntityById<TEntity>(string id)
         // {
         //     return  _dbContext.FindAsync<TEntity>(id);
         // }
@@ -26,7 +26,7 @@ namespace CashmereServer.GraphQL.Repositories
         // //     return  dbContext.FindAsync<TEntity>(uuid);
         // // }
 
-        // public static Task<TEntity> GetEntityByIds<TEntity>(Guid[] ids)
+        // public static Task<TEntity> GetEntityByIds<TEntity>(string[] ids)
         // {
         //     return  _dbContext.FindAsync<TEntity>(ids);
         // }

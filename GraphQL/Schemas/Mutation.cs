@@ -29,7 +29,7 @@ namespace CashmereServer.GraphQL.Schemas
 
         public User NewUser(string name){
             User c = new User();
-            c.Id=new Guid();
+            c.Id=new Guid().ToString();
             c.GivenName = name;
             _repository.NewUserAsync(c);
             return c;

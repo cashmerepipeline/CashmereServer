@@ -17,8 +17,13 @@ namespace CashmereServer.GraphQL.Schemas
                 ?? throw new ArgumentNullException(nameof(repository));
         }
         // public string Hello() => "world";
+        
+        public Task<Account> GetAccount(string id)
+        {
+            return _repository.GetAccount(id);
+        }
 
-        public Task<Account> GetAccount(Guid id, [DataLoader]AccountDataLoader dataLoader)
+        public Task<Account> GetAccount(string id, [DataLoader]AccountDataLoader dataLoader)
         {
             return dataLoader.LoadAsync(id);
         }

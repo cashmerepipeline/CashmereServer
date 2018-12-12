@@ -2,8 +2,8 @@ using System;
 
 namespace CashmereServer.Database.Models
 {
-    public class Workflow:BaseEntity
+    public class Workflow : BaseEntity
     {
-       
+
     }
 }

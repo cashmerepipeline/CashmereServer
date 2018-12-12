@@ -44,8 +44,8 @@ namespace CashmereServer.Database
 
             modelBuilder.Entity<Account>().HasIndex(a=>a.Email).IsUnique();
             modelBuilder.Entity<Account>().HasIndex(a=>a.PhoneNumber).IsUnique();
-            modelBuilder.Entity<Account>().Property(p=>p.AccountGroupIds).HasDefaultValue(null);
-            modelBuilder.Entity<Account>().Property(p=>p.AccountTeamIds).HasDefaultValue(null);
+            // modelBuilder.Entity<Account>().Property(p=>p.AccountGroupIds).HasDefaultValue(null);
+            // modelBuilder.Entity<Account>().Property(p=>p.AccountTeamIds).HasDefaultValue(null);
             modelBuilder.Entity<Account>().Property(p=>p.IsHuman).HasDefaultValue(true);
            
 
@@ -92,16 +92,16 @@ namespace CashmereServer.Database
 
             newModelBuilder.HasAlternateKey("Uuid");
 
-            newModelBuilder
-                        .Property("CreationTime")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("transaction_timestamp()");
+            // newModelBuilder
+            //             .Property("CreationTime")
+            //             .ValueGeneratedOnAdd()
+            //             .HasDefaultValueSql("transaction_timestamp()");
 
-            newModelBuilder
-                        .Property("ModifiedTime")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasComputedColumnSql("transaction_timestamp()")
-                        .HasDefaultValueSql("transaction_timestamp()");
+            // newModelBuilder
+            //             .Property("ModifiedTime")
+            //             .ValueGeneratedOnAddOrUpdate()
+            //             .HasComputedColumnSql("transaction_timestamp()")
+            //             .HasDefaultValueSql("transaction_timestamp()");
                         
             // newModelBuilder
                         // .Property("ExtendData")

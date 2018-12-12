@@ -61,9 +61,6 @@ namespace CashmereServer
                 c.RegisterType<TeamType>();
             }));
 
-
-
-
             services.AddSpaStaticFiles();
             services.AddRouting();
             services.AddMvc();
@@ -85,18 +82,19 @@ namespace CashmereServer
 
             app.UseGraphQL();
             app.UseStaticFiles();
-            // app.UseMvcWithDefaultRoute();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                ///////////////////////////////////////////////////
-                routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
-                ///////////////////////////////////////////////////////
-            });
+            app.UseMvcWithDefaultRoute();
+            app.UseMvc();
+            // app.UseMvc(routes =>
+            // {
+            //     routes.MapRoute(
+            //         name: "default",
+            //         template: "{controller=Home}/{action=Index}/{id?}");
+            //     ///////////////////////////////////////////////////
+            //     routes.MapSpaFallbackRoute(
+            //         name: "spa-fallback",
+            //         defaults: new { controller = "Home", action = "Index" });
+            //     ///////////////////////////////////////////////////////
+            // });
         }
     }
 }

@@ -10,7 +10,6 @@ namespace CashmereServer.Database.Models
     public interface IBaseEntity
     {
         Guid Id{get; set;}
-        // Guid Uuid{get; set;}
         Guid CreatorId{get; set;}        
         DateTime CreationTime {get; set;}
         Guid ModifierId{get; set;}
