@@ -41,7 +41,7 @@ namespace CashmereServer.GraphQL.Repositories
 
                 var utcNow = DateTime.UtcNow;
                 account.CreationTime = utcNow.ToLocalTime();
-                account.ModifiedTime = utcNow;
+                account.ModifiedTime = utcNow.ToLocalTime();
 
                 account.CreatorId = account.Id;
                 account.ModifierId = account.Id;
@@ -55,8 +55,8 @@ namespace CashmereServer.GraphQL.Repositories
                 user.CreatorId = account.Id;
                 user.ModifierId = account.Id;
 
-                user.CreationTime = utcNow;
-                user.ModifiedTime = utcNow;
+                user.CreationTime = utcNow.ToLocalTime();
+                user.ModifiedTime = utcNow.ToLocalTime();
 
                 user.Name = "defaultName";
                 user.FamilyName = "defaultFamily";
@@ -68,12 +68,14 @@ namespace CashmereServer.GraphQL.Repositories
 
                 // account.CreatorId = currentUserId;
                 _dbContext.Users.Add(user);
-                _dbContext.SaveChanges();
+                // _dbContext.SaveChanges();
                 
                 _dbContext.Accounts.Add(account);
 
                 Console.WriteLine("{0}, {1}, {2}, {3}",
                                     account.Id, account.ModifiedTime, account.PhoneNumber, account.IsHuman);
+                Console.WriteLine("{0}, {1}, {2}, {3}",
+                                    user.Id, user.ModifiedTime, user.CreationTime, user.Sex);
 
                 var result = _dbContext.SaveChanges();
 
