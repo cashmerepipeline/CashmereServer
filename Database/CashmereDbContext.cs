@@ -92,16 +92,16 @@ namespace CashmereServer.Database
 
             newModelBuilder.HasAlternateKey("Uuid");
 
-            // newModelBuilder
-            //             .Property("CreationTime")
-            //             .ValueGeneratedOnAdd()
-            //             .HasDefaultValueSql("transaction_timestamp()");
+            newModelBuilder
+                        .Property("CreationTime")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("transaction_timestamp()");
 
-            // newModelBuilder
-            //             .Property("ModifiedTime")
-            //             .ValueGeneratedOnAddOrUpdate()
-            //             .HasComputedColumnSql("transaction_timestamp()")
-            //             .HasDefaultValueSql("transaction_timestamp()");
+            newModelBuilder
+                        .Property("ModifiedTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasComputedColumnSql("transaction_timestamp()")
+                        .HasDefaultValueSql("transaction_timestamp()");
                         
             // newModelBuilder
                         // .Property("ExtendData")

@@ -5,4 +5,5 @@
 
 
 GraphQL：
+    ☐ uuid查询不能序列化
 

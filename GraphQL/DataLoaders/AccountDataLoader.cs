@@ -9,20 +9,20 @@ using CashmereServer.GraphQL.Repositories;
 namespace CashmereServer.GraphQL.DataLoaders
 {
     public class AccountDataLoader
-        :DataLoaderBase<string, Account>
+        :DataLoaderBase<Guid, Account>
     {
         private readonly CashmereRepository _cashmereRepository;
         public AccountDataLoader(CashmereRepository cashmereRepository)
-            :base(new DataLoaderOptions<string>())
+            :base(new DataLoaderOptions<Guid>())
         {
             _cashmereRepository = cashmereRepository;
         }
 
-         public List<IReadOnlyList<string>> Loads { get; } =
-            new List<IReadOnlyList<string>>();
+         public List<IReadOnlyList<Guid>> Loads { get; } =
+            new List<IReadOnlyList<Guid>>();
 
         protected override Task<IReadOnlyList<IResult<Account>>> Fetch(
-            IReadOnlyList<string> keys)
+            IReadOnlyList<Guid> keys)
         {
             // The fetch method has to return a result for each key in the same order as the keys.
             // So if the repository returns less or in a different order this fetch method must return an Array
@@ -33,7 +33,7 @@ namespace CashmereServer.GraphQL.DataLoaders
             var result = _cashmereRepository.GetAccountByIds(keys).ToDictionary(t => t.Id);
             var list = new List<Result<Account>>();
 
-            foreach (string key in keys)
+            foreach (var key in keys)
             {
                 if (result.TryGetValue(key, out Account account))
                 {

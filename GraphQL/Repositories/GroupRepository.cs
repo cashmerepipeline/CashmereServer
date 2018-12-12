@@ -13,26 +13,19 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<Group> GetGroupAsync(int id)
+        public Task<Group> GetGroupAsync(Guid id)
         {
             return _dbContext.Groups.FindAsync(id);
         }
 
-        public Task<List<Group>> GetGroupsAsync(string[] ids)
+        public Task<List<Group>> GetGroupsAsync(Guid[] ids)
         {
-            // List<Group> result=null;
-            // foreach(var id in ids)
-            // {
-            //     // IEnumerable<Group>
-            //     result.Add( _dbContext.Groups.;
-            // }
-
-            var result = _dbContext.Groups.Where(g=>ids.Contains(g.Id)).ToListAsync();
+            var result = _dbContext.Groups.Where(g => ids.Contains(g.Id)).ToListAsync();
 
             return result;
         }
 
-        public Group GetGroup(int id)
+        public Group GetGroup(Guid id)
         {
             return _dbContext.Groups.FindAsync(id).Result;
         }
@@ -44,7 +37,7 @@ namespace CashmereServer.GraphQL.Repositories
             return result;
         }
 
-        internal async Task<Group> UpdateGroup(int id, string name)
+        internal async Task<Group> UpdateGroup(Guid id, string name)
         {
             var c = _dbContext.Groups.FindAsync(id).Result;
             c.Name = name;

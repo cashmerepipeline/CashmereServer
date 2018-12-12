@@ -11,8 +11,8 @@
 数据库设计：
     ✘ ID使用seriel 方式为Key @cancelled(18-12-09 09:32)
     ✘ 每个Entity包含uuid列 @cancelled(18-12-09 09:32)
-    ☐ 使用guid作为主键，不再使用序列id建
-    ☐ 默认数据的生成都在程序中生成
+    ✔ 使用guid作为主键，不再使用序列id建 @done(18-12-12 13:14)
+    ✔ 默认数据的生成都在程序中生成 @done(18-12-12 13:15)
     ✔ 通用属性基类：BaseEntity, 接口：IBaseEntity @done(18-12-09 09:32)
     ✔ ExtendData列到IExtendData接口，用于后期数据库扩展 @done(18-12-09 09:32)
 

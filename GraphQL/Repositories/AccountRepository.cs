@@ -15,17 +15,17 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<Account> GetAccountAsync(string id)
+        public Task<Account> GetAccountAsync(Guid id)
         {
             return _dbContext.Accounts.FindAsync(id);
         }
 
-        public Task<Account> GetAccount(string id)
+        public Task<Account> GetAccount(Guid id)
         {
             return _dbContext.Accounts.FindAsync(id);
         }
 
-        public IEnumerable<Account> GetAccountByIds(IEnumerable<string> ids)
+        public IEnumerable<Account> GetAccountByIds(IEnumerable<Guid> ids)
         {
             return _dbContext.Accounts.ToList().Where(a => ids.Contains(a.Id));
             // var result = _dbContext.Accounts.ToList().Where(a=>ids.Contains(a.Id));
@@ -36,23 +36,23 @@ namespace CashmereServer.GraphQL.Repositories
         {
             try
             {   
-                var a_id =  new Guid();
-                account.Id = a_id.ToString();
+                var a_id =  Guid.NewGuid();
+                account.Id = a_id;
 
                 var utcNow = DateTime.UtcNow;
                 account.CreationTime = utcNow.ToLocalTime();
                 account.ModifiedTime = utcNow;
 
-                account.CreatorId = account.Id.ToString();
+                account.CreatorId = account.Id;
                 account.ModifierId = account.Id;
                 account.IsHuman = true;
-                account.AccountGroupIds=new string[]{};
-                account.AccountTeamIds=new string[]{};
+                account.AccountGroupIds=new Guid[]{};
+                account.AccountTeamIds=new Guid[]{};
 
                 var user = new User();
                 var u_id = new Guid();
-                user.Id = u_id.ToString();
-                user.CreatorId = account.Id.ToString();
+                user.Id = u_id;
+                user.CreatorId = account.Id;
                 user.ModifierId = account.Id;
 
                 user.CreationTime = utcNow;
@@ -86,7 +86,7 @@ namespace CashmereServer.GraphQL.Repositories
 
         }
 
-        internal async Task<Account> UpdateAccount(int id, Dictionary<string, dynamic> properties)
+        internal async Task<Account> UpdateAccount(Guid id, Dictionary<string, dynamic> properties)
         {
             var account = _dbContext.Accounts.Find(id);
             foreach (var key in properties.Keys)

@@ -23,13 +23,14 @@ namespace CashmereServer.GraphQL.Schemas
             a.Password = password;
 
             _repository.NewAccountAsync(a);
-            
+
             return a;
         }
 
-        public User NewUser(string name){
+        public User NewUser(string name)
+        {
             User c = new User();
-            c.Id=new Guid().ToString();
+            c.Id = Guid.NewGuid();
             c.GivenName = name;
             _repository.NewUserAsync(c);
             return c;
@@ -38,7 +39,7 @@ namespace CashmereServer.GraphQL.Schemas
         public User UpdateUser(int id, string name)
         {
             var c = _repository.UpdateUser(id, name);
-            
+
             return c.Result;
         }
     }

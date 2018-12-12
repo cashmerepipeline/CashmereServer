@@ -11,12 +11,12 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<Team> GetTeamAsync(int id)
+        public Task<Team> GetTeamAsync(Guid id)
         {
             return _dbContext.Teams.FindAsync(id);
         }
 
-        public Team GetTeam(int id)
+        public Team GetTeam(Guid id)
         {
             return _dbContext.Teams.FindAsync(id).Result;
         }
@@ -28,7 +28,7 @@ namespace CashmereServer.GraphQL.Repositories
             return result;
         }
 
-        internal async Task<Team> UpdateTeam(int id, string name)
+        internal async Task<Team> UpdateTeam(Guid id, string name)
         {
             var c = _dbContext.Teams.FindAsync(id).Result;
             c.Name = name;
