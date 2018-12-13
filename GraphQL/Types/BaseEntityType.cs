@@ -14,11 +14,11 @@ namespace CashmereServer.GraphQL.Types
 
             // descriptor.Field("uuid").Type<StringType>();
 
-            descriptor.Field("creator").Type<AccountType>();
+            // descriptor.Field("creator").Type<AccountType>();
 
             descriptor.Field("creationTime").Type<DateTimeType>();
 
-            descriptor.Field("modifier").Type<AccountType>();
+            // descriptor.Field("modifier").Type<AccountType>();
 
             descriptor.Field("modifiedTime").Type<DateTimeType>();
 
