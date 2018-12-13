@@ -14,24 +14,24 @@ namespace CashmereServer.GraphQL.Types
 
             descriptor.Interface<BaseEntityType<Account>>();
 
-            descriptor.Field(t=>t.AccountGroupIds).Ignore();
-            descriptor.Field(t=>t.AccountGroups).Ignore();
-            descriptor.Field(t=>t.AccountTeamIds).Ignore();
-            descriptor.Field(t=>t.AccountTeams).Ignore();
+            descriptor.Field(t => t.AccountGroupIds).Ignore();
+            descriptor.Field(t => t.AccountGroups).Ignore();
+            descriptor.Field(t => t.AccountTeamIds).Ignore();
+            descriptor.Field(t => t.AccountTeams).Ignore();
             // descriptor.Field(t=>t.UserId).Ignore();
-            descriptor.Field(t=>t.CreatorId).Ignore();
-            descriptor.Field(t=>t.ModifierId).Ignore();
+            descriptor.Field(t => t.CreatorId).Ignore();
+            descriptor.Field(t => t.ModifierId).Ignore();
 
             // descriptor.Field(t=>t.Role).Ignore();
 
             descriptor.Field(t => t.Id).Type<NonNullType<UuidType>>();
 
-            descriptor.Field(t=>t.Creator).Ignore();
-            descriptor.Field<BaseResolver<Account>>(t=>t.GetCreator(default, default));
+            descriptor.Field(t => t.Creator).Ignore();
+            descriptor.Field<BaseResolver<Account>>(t => t.GetCreator(default, default));
             descriptor.Field(t => t.CreationTime).Type<DateTimeType>();
 
-            descriptor.Field(t=>t.Modifier).Ignore();
-            descriptor.Field<BaseResolver<Account>>(t=>t.GetModifier(default, default));
+            descriptor.Field(t => t.Modifier).Ignore();
+            descriptor.Field<BaseResolver<Account>>(t => t.GetModifier(default, default));
             descriptor.Field(t => t.ModifiedTime).Type<DateTimeType>();
 
             descriptor.Field(t => t.Name).Type<StringType>();
@@ -41,9 +41,9 @@ namespace CashmereServer.GraphQL.Types
             descriptor.Field(t => t.Email).Type<StringType>();
 
             // descriptor.Field(t => t.User);
-            descriptor.Field<AccountResolver>(t=>t.GetUser(default, default));
-                   
-            
+            descriptor.Field<AccountResolver>(t => t.GetUser(default, default));
+
+
         }
     }
 }

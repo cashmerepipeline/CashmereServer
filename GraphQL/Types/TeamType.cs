@@ -1,5 +1,6 @@
 using HotChocolate.Types;
 using CashmereServer.Database.Models;
+using CashmereServer.GraphQL.Resolvers;
 
 namespace CashmereServer.GraphQL.Types
 {
@@ -13,10 +14,13 @@ namespace CashmereServer.GraphQL.Types
             descriptor.Interface<BaseEntityType<Team>>();
 
             descriptor.Field(t => t.Id).Type<NonNullType<UuidType>>();
-            // descriptor.Field(t => t.Uuid).Type<StringType>(); 
-           descriptor.Field(t=>t.CreatorId).Type<UuidType>();
+
+            descriptor.Field(t => t.Creator).Ignore();
+            descriptor.Field<BaseResolver<Account>>(t => t.GetCreator(default, default));
             descriptor.Field(t => t.CreationTime).Type<DateTimeType>();
-            descriptor.Field(t=>t.ModifierId).Type<UuidType>();
+
+            descriptor.Field(t => t.Modifier).Ignore();
+            descriptor.Field<BaseResolver<Account>>(t => t.GetModifier(default, default));
             descriptor.Field(t => t.ModifiedTime).Type<DateTimeType>();
 
             descriptor.Field(t => t.Name).Type<StringType>();

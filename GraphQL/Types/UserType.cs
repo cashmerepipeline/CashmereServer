@@ -14,18 +14,19 @@ namespace CashmereServer.GraphQL.Types
 
             descriptor.Interface<BaseEntityType<User>>();
 
-            descriptor.Field(t=>t.AccountId).Ignore();
-            descriptor.Field(t=>t.CreatorId).Ignore();
-            descriptor.Field(t=>t.ModifierId).Ignore();
+            descriptor.Field(t => t.AccountId).Ignore();
+            descriptor.Field(t => t.CreatorId).Ignore();
+            descriptor.Field(t => t.ModifierId).Ignore();
 
             descriptor.Field(t => t.Id).Type<NonNullType<UuidType>>();
-            // descriptor.Field(t => t.Uuid).Type<StringType>(); 
-            // descriptor.Field(t=>t.Creator)
-                    // .Resolver(ctx=>ctx.Service<AccountDataLoader>().LoadAsync(ctx.Parent<User>().AccountId));
-            descriptor.Field<BaseResolver<User>>(t=>t.GetCreator(default, default));
 
+            descriptor.Field(t => t.Creator).Ignore();
+            descriptor.Field<BaseResolver<User>>(t => t.GetCreator(default, default));
             descriptor.Field(t => t.CreationTime).Type<DateTimeType>();
-            descriptor.Field(t=>t.Modifier).Type<AccountType>();
+
+
+            descriptor.Field(t => t.Modifier).Ignore();
+            descriptor.Field<BaseResolver<User>>(t => t.GetModifier(default, default));
             descriptor.Field(t => t.ModifiedTime).Type<DateTimeType>();
 
             descriptor.Field(t => t.Name).Type<StringType>();
