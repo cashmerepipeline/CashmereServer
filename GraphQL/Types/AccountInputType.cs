@@ -3,8 +3,8 @@ using CashmereServer.Database.Models;
 
 namespace CashmereServer.GraphQL.Types
 {
-    public class UserInputTypeBack
-    : InputObjectType<User>
+    public class AccountInputTypeBack
+    : InputObjectType<Account>
     {
     }
 }

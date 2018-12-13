@@ -51,6 +51,9 @@ namespace CashmereServer
                 c.RegisterServiceProvider(sp);
 
                 c.RegisterDataLoader<AccountDataLoader>();
+                c.RegisterDataLoader<GroupDataLoader>();
+                c.RegisterDataLoader<TeamDataLoader>();
+                c.RegisterDataLoader<UserDataLoader>();
 
                 c.RegisterQueryType<Query>();
                 c.RegisterMutationType<MutationType>();

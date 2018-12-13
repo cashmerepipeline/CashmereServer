@@ -10,6 +10,10 @@ namespace CashmereServer.Database.Models
     public class User : BaseEntity
     {  
         [Required]
+        public Guid AccountId { get; set; }
+        public Account Account { get; set; }
+
+        [Required]
         public string FamilyName { get; set; }
         [Required]
         public string GivenName { get; set; }

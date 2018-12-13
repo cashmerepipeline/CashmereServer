@@ -15,18 +15,18 @@ namespace CashmereServer.GraphQL.Repositories
             _dbContext = db;
         }
 
-        // public static  Task<TEntity> GetEntityById<TEntity>(string id)
+        // public static  Task<TEntity> GetEntityById<TEntity>(Guid id)
         // {
         //     return  _dbContext.FindAsync<TEntity>(id);
         // }
 
-        // // public static  Task<TEntity> GetEntityByUuid<TEntity>(string uuid, CashmereDbContext dbContext) where TEntity: class
+        // // public static  Task<TEntity> GetEntityByUuid<TEntity>(Guid uuid, CashmereDbContext dbContext) where TEntity: class
         // // {   
         // //     int id = dbContext.FindAsync
         // //     return  dbContext.FindAsync<TEntity>(uuid);
         // // }
 
-        // public static Task<TEntity> GetEntityByIds<TEntity>(string[] ids)
+        // public static Task<TEntity> GetEntityByIds<TEntity>(Guid[] ids)
         // {
         //     return  _dbContext.FindAsync<TEntity>(ids);
         // }

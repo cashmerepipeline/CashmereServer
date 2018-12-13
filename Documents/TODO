@@ -2,15 +2,17 @@
     ✔ 区分Account和User和概念 @done(18-12-09 09:40)
     ✔ 使用Guid作为id @done(18-12-09 09:41)4
     ☐ 集成DataLoader GreenNut
-        ☐ 理清DataLoader Task返回类型的构建方法
+        ✘ 理清DataLoader Task返回类型的构建方法 @cancelled(18-12-13 11:26)
+        ☐ 查询部分使用DataLoader查询数据
 
 数据库设计：
-    ☐ 使用BaseEntity抽象类重构数据表
-    ☐ 结合
+    ✔ 使用BaseEntity抽象类重构数据表 @done(18-12-13 11:24)
+    ☐ 清理Model
 
 单元测试：
     ☐ 学习单元测试的写法
     ☐ 编写数据库模块的单元测试
 
 前端：
-    ☐ 集成vue前端开发基本模块
+    ✔ 集成vue前端开发基本模块 @done(18-12-13 11:24)
+    ☐ GrpaphQL用户管理模块

@@ -22,7 +22,6 @@ namespace CashmereServer.Database
         public DbSet<Role> Roles{get; set;}
         
         public DbSet<User> Users { get; set; }
-        // public DbSet<BaseEntity> BaseEntity {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,11 +45,10 @@ namespace CashmereServer.Database
             modelBuilder.Entity<Account>().HasIndex(a=>a.PhoneNumber).IsUnique();
             // modelBuilder.Entity<Account>().Property(p=>p.AccountGroupIds).HasDefaultValue(null);
             // modelBuilder.Entity<Account>().Property(p=>p.AccountTeamIds).HasDefaultValue(null);
-            modelBuilder.Entity<Account>().Property(p=>p.IsHuman).HasDefaultValue(true);
-           
+            modelBuilder.Entity<Account>().Property(p=>p.IsHuman).HasDefaultValue(true);           
 
-            // modelBuilder.Entity<User>().Property(u=>u.)
-
+            // account -- user one-one
+            modelBuilder.Entity<Account>().HasOne(a=>a.User).WithOne(u=>u.Account).HasForeignKey<User>(u=>u.AccountId);
 
             // account -- team many-many
             modelBuilder.Entity<AccountTeam>()

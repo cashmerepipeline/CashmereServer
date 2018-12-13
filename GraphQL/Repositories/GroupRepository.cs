@@ -13,21 +13,14 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<Group> GetGroupAsync(Guid id)
+        public Task<Group> GetGroup(Guid id)
         {
             return _dbContext.Groups.FindAsync(id);
         }
-
-        public Task<List<Group>> GetGroupsAsync(Guid[] ids)
+        
+        public IEnumerable<Group> GetGroupByIds(IEnumerable<Guid> ids)
         {
-            var result = _dbContext.Groups.Where(g => ids.Contains(g.Id)).ToListAsync();
-
-            return result;
-        }
-
-        public Group GetGroup(Guid id)
-        {
-            return _dbContext.Groups.FindAsync(id).Result;
+            return _dbContext.Groups.ToList().Where(a => ids.Contains(a.Id));
         }
 
         public int NewGroupAsync(Group Group)

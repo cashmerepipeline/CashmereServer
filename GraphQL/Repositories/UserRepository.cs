@@ -4,6 +4,7 @@ using CashmereServer.Database;
 using CashmereServer.Database.Models;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
+using System.Collections.Generic;
 
 namespace CashmereServer.GraphQL.Repositories
 {
@@ -11,14 +12,14 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<User> GetUserAsync(Guid id)
+        public Task<User> GetUser(Guid id)
         {
             return _dbContext.Users.FindAsync(id);
         }
 
-        public User GetUser(Guid id)
+        public IEnumerable<User> GetUserByIds(IEnumerable<Guid> ids)
         {
-            return _dbContext.Users.FindAsync(id).Result;
+            return _dbContext.Users.ToList().Where(a => ids.Contains(a.Id));
         }
 
         public int NewUserAsync(User user)

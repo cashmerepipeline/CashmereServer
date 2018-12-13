@@ -16,7 +16,11 @@
     ✔ 通用属性基类：BaseEntity, 接口：IBaseEntity @done(18-12-09 09:32)
     ✔ ExtendData列到IExtendData接口，用于后期数据库扩展 @done(18-12-09 09:32)
 
-    ☐ 区分Account和User的概念， Account拥有User
+    ☐ 区分Account和User的概念， 
+        ☐ Account拥有User,
+        ☐ User在创建Account的时候创建,
+        ☐ User不独立存在
+        
     ☐ Group 和 Team 针对 Acount
 
 账号相关：

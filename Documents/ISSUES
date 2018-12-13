@@ -3,7 +3,9 @@
     ✘ Model和GraphQL之间映射， 使用Id列表还是类型列表 @cancelled(18-12-09 09:39)
     ✘ ef 不能设置默认值表达式，imix可以设置 @cancelled(18-12-09 09:40)
 
+    ☐ 表继承的field不能有默认值
 
 GraphQL：
-    ☐ uuid查询不能序列化
+    ✔ uuid查询不能序列化 @done(18-12-13 11:22)
+        ✔ type类型不正确，已修改 @done(18-12-13 11:22)
 

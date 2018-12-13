@@ -15,11 +15,6 @@ namespace CashmereServer.GraphQL.Repositories
     public partial class CashmereRepository
     {
 
-        public Task<Account> GetAccountAsync(Guid id)
-        {
-            return _dbContext.Accounts.FindAsync(id);
-        }
-
         public Task<Account> GetAccount(Guid id)
         {
             return _dbContext.Accounts.FindAsync(id);
@@ -28,8 +23,6 @@ namespace CashmereServer.GraphQL.Repositories
         public IEnumerable<Account> GetAccountByIds(IEnumerable<Guid> ids)
         {
             return _dbContext.Accounts.ToList().Where(a => ids.Contains(a.Id));
-            // var result = _dbContext.Accounts.ToList().Where(a=>ids.Contains(a.Id));
-            // return System.Threading.Tasks.Task.FromResult<IEnumerable<Account>>(result);
         }
 
         public int NewAccountAsync(Account account)
@@ -65,6 +58,9 @@ namespace CashmereServer.GraphQL.Repositories
                 user.Sex = ESex.male;
 
                 account.User = user;
+                user.Account = account;
+                account.Creator = account;
+                account.Modifier = account;
 
                 _dbContext.Users.Add(user);
                 _dbContext.Accounts.Add(account);

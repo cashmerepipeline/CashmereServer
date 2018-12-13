@@ -30,17 +30,32 @@ namespace CashmereServer.GraphQL.Schemas
 
         public Group GetGroup(Guid id)
         {
-            return _repository.GetGroupAsync(id).Result;
+            return _repository.GetGroup(id).Result;
+        }
+
+        public Task<Group> GetGroup(Guid id, [DataLoader]GroupDataLoader dataLoader)
+        {
+            return dataLoader.LoadAsync(id);
         }
 
         public Team GetTeam(Guid id)
         {
-            return _repository.GetTeamAsync(id).Result;
+            return _repository.GetTeam(id).Result;
+        }
+
+        public Task<Team> GetTeam(Guid id, [DataLoader]TeamDataLoader dataLoader)
+        {
+            return dataLoader.LoadAsync(id);
         }
 
         public User GetUser(Guid id)
         {
-            return _repository.GetUserAsync(id).Result;
+            return _repository.GetUser(id).Result;
+        }
+
+        public Task<User> GetUser(Guid id, [DataLoader]UserDataLoader dataLoader)
+        {
+            return dataLoader.LoadAsync(id);
         }
     }
 }
