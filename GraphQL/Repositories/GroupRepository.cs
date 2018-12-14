@@ -23,7 +23,7 @@ namespace CashmereServer.GraphQL.Repositories
             return _dbContext.Groups.ToList().Where(a => ids.Contains(a.Id));
         }
 
-        public int NewGroupAsync(Group Group)
+        public int NewGroup(Group Group)
         {
             _dbContext.Groups.Add(Group);
             var result = _dbContext.SaveChanges();

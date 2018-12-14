@@ -16,6 +16,11 @@ namespace CashmereServer.GraphQL.Types
                 .Argument("email", a=>a.Type<StringType>())
                 .Argument("password", a=>a.Type<StringType>());
 
+            descriptor.Field(t=>t.UpdateAccount(default, default))
+                .Type<NonNullType<AccountType>>()
+                .Argument("id", a=>a.Type<UuidType>())
+                .Argument("properties", a=>a.Type<T>());
+
             descriptor.Field(t => t.NewUser(default))
                 .Type<NonNullType<UserType>>()
                 .Argument("name", a => a.Type<StringType>());

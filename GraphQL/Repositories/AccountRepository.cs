@@ -25,7 +25,7 @@ namespace CashmereServer.GraphQL.Repositories
             return _dbContext.Accounts.ToList().Where(a => ids.Contains(a.Id));
         }
 
-        public int NewAccountAsync(Account account)
+        public int NewAccount(Account account)
         {
             try
             {   
